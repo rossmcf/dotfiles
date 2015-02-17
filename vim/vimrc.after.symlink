@@ -1,0 +1,9 @@
+set ts=4
+if has("gui_running")
+  syntax enable
+  set background=dark
+  colorscheme solarized
+  if has("gui_macvim")
+    set guifont=Source\ Code\ Pro\ ExtraLight:h14
+  endif
+endif
