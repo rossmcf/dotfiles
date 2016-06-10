@@ -1,4 +1,5 @@
 alias reload!='. ~/.zshrc'
 alias @='open /Applications/Atom.app; atom '
-alias startenv='VBoxManage startvm platform-dev --type headless;sleep 5;ssh dev@commerce.mesh.mx.local'
+alias shenv='sshpass -p "devpass" ssh dev@commerce.mesh.mx.local'
+alias startenv='VBoxManage startvm platform-dev --type headless; shenv'
 alias stopenv='VboxManage controlvm platform-dev acpipowerbutton'

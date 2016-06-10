@@ -1,3 +1,6 @@
+# PATH
+export PATH=".:./bin:/usr/local/bin:/usr/local/sbin:/Users/rossmcf/.dotfiles/bin:/Users/rossmcf/code/go/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin:./bin:/usr/local/sbin:/Users/rossmcf/.dotfiles/bin:/Users/rossmcf/code/go/bin:/Users/rossmcf/bin"
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
