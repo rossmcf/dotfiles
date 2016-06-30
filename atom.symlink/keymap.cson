@@ -1,3 +1,10 @@
 'body':
   'cmd-shift-{': 'pane:show-previous-item'
   'ctrl-shift-}': 'pane:show-next-item'
+  'cmd-ctrl-alt-t': 'phpunit:current'
+
+'.platform-darwin atom-text-editor':
+  'cmd-shift-t': 'symbols-view:toggle-file-symbols'
+
+'.platform-darwin, .platform-win32, .platform-linux':
+  'ctrl-g': 'go-to-line:toggle'

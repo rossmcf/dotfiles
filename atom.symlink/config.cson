@@ -1,11 +1,13 @@
 "*":
-  editor:
-    showIndentGuide: true
-    fontFamily: "Source Code Pro"
-    fontSize: 14
-    invisibles: {}
-    tabLength: 4
+  "autocomplete-plus": {}
   core:
+    disabledPackages: [
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+      "go-playground"
+    ]
+    hideGitIgnoredFiles: true
     ignoredNames: [
       ".bundle"
       ".git"
@@ -15,26 +17,39 @@
       "vendor"
     ]
     themes: [
-      "one-dark-ui"
+      "solarized-dark-ui"
       "solarized-dark-syntax"
     ]
-    hideGitIgnoredFiles: true
-    disabledPackages: [
-      "background-tips"
-      "exception-reporting"
-      "metrics"
-    ]
+  editor:
+    fontFamily: "Source Code Pro"
+    fontSize: 13
+    invisibles: {}
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    softTabs: false
+    softWrap: true
+    tabLength: 4
+    tabType: "hard"
+  "go-debug":
+    limitCommandsToGo: true
+    panelInitialVisible: false
+  "go-plus":
+    formatTool: "gofmt"
+    goPath: "/Users/rossmcf/Code/go"
+    runCoverageOnSave: true
+  "markdown-preview": {}
+  phpunit:
+    execPath: "/Users/rossmcf/code/json/vendor/bin/phpunit"
+  "release-notes":
+    viewedVersion: "0.89.0"
   "spell-check":
     grammars: [
       "text.plain"
       "source.gfm"
       "text.git-commit"
     ]
+  "tester-go": {}
+  "tree-view": {}
   welcome:
     showOnStartup: false
-  "release-notes":
-    viewedVersion: "0.89.0"
-  "go-plus": {}
-  phpunit:
-    runOnSave: true
-    execPath: "/Users/rossmcf/code/json/vendor/bin/phpunit"
