@@ -7,3 +7,19 @@ if has("gui_running")
     set guifont=Source\ Code\ Pro\ ExtraLight:h14
   endif
 endif
+
+execute pathogen#infect()
+
+" Open/close file browser
+map <C-A> :NERDTreeToggle<CR>
+
+" Check go syntax thoroughly.
+let g:syntastic_go_checkers = ["go", "gofmt", "golint", "gotype", "govet"]
+nmap <F8> :TagbarToggle<CR>
+
+" Required by vimwiki
+set nocompatible
+filetype plugin on
+syntax on
+
+command! -range -nargs=0 -bar JsonTool <line1>,<line2>!python -m json.tool
