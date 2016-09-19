@@ -1,14 +1,6 @@
-set ts=4
-if has("gui_running")
-  syntax enable
-  set background=dark
-  colorscheme solarized
-  if has("gui_macvim")
-    set guifont=Source\ Code\ Pro\ ExtraLight:h14
-  endif
-endif
-
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'fatih/vim-go'
+call plug#end()
 
 " Open/close file browser
 map <C-A> :NERDTreeToggle<CR>
