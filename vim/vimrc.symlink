@@ -1,5 +1,10 @@
 call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'Shougo/neocomplete.vim'
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -37,3 +42,10 @@ filetype plugin on
 syntax on
 
 command! -range -nargs=0 -bar JsonTool <line1>,<line2>!python -m json.tool
+
+" NERDCommenter
+filetype plugin on
+map <D-\> <leader>c<space>
+
+" Line numbers
+:set number
