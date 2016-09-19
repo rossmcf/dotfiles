@@ -137,8 +137,21 @@ install_dotfiles () {
   done
 }
 
+install_colours () {
+  info 'installing colours'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  for src in $(find "$DOTFILES_ROOT/colours" -maxdepth 1 -name '*.clr')
+  do
+		  dst="$HOME/Library/Colors/$(basename $src)"
+    link_file "$src" "$dst"
+  done
+}
+
 setup_gitconfig
 install_dotfiles
+install_colours
 
 # If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]

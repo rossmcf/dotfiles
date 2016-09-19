@@ -1,9 +1,31 @@
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
 Plug 'fatih/vim-go'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'wincent/command-t', {
+    \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+    \ }
 call plug#end()
 
+set ts=4
+if has("gui_running")
+	syntax enable
+	set background=dark
+	colorscheme solarized
+	if has("gui_macvim")
+		set guifont=Source\ Code\ Pro\ ExtraLight:h14
+	endif
+endif
+
 " Open/close file browser
-map <C-A> :NERDTreeToggle<CR>
+" map <C-A> :NERDTreeToggle<CR>
+map <C-A> :vsplit .<CR>
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " Check go syntax thoroughly.
 let g:syntastic_go_checkers = ["go", "gofmt", "golint", "gotype", "govet"]
