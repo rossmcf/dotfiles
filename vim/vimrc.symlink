@@ -4,25 +4,34 @@ Plug 'scrooloose/syntastic'
 Plug 'Shougo/neocomplete.vim'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-fugitive'
+Plug 'elzr/vim-json'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
+Plug 'majutsushi/tagbar'
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
     \ }
 call plug#end()
 
 set ts=4
+set shiftwidth=2
+set softtabstop=2
+set noexpandtab
 if has("gui_running")
 	syntax enable
 	set background=dark
 	colorscheme solarized
 	if has("gui_macvim")
-		set guifont=Source\ Code\ Pro\ ExtraLight:h14
+		set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 	endif
 endif
+
+let g:airline_theme='solarized'
+let g:airline_powerline_fonts=1
+:set laststatus=2
 
 " Open/close file browser
 " map <C-A> :NERDTreeToggle<CR>
@@ -34,6 +43,23 @@ map <C-l> <C-w>l
 
 " Check go syntax thoroughly.
 let g:syntastic_go_checkers = ["go", "gofmt", "golint", "gotype", "govet"]
+
+" Go syntax highlighting.
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" vim-go + syntastic
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+let g:go_list_type = "quickfix"
+
+let g:go_fmt_command = "goimports"
+
+" Show tags with F8.
 nmap <F8> :TagbarToggle<CR>
 
 " Required by vimwiki

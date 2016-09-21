@@ -1,1 +1,3 @@
-alias vd='vim .'
+alias vd='mvim .'
+alias vim='mvim'
+alias cvim='vim'

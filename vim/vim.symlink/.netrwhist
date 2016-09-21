@@ -1,2 +1,10 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/rossmcf/code/go/src/github.com/adonovan/gopl.io/ch8'
+let g:netrw_dirhist_2='/Users/rossmcf/code/go/src/github.com/adonovan/gopl.io'
+let g:netrw_dirhist_3='/Users/rossmcf/code/go/src/github.com/adonovan/gopl.io/ch8'
+let g:netrw_dirhist_4='/Users/rossmcf/code/go/src/github.com/adonovan/gopl.io/ch8/reverb1'
+let g:netrw_dirhist_5='/Users/rossmcf/src/github.com/adonovan/gopl.io/ch8/reverb2'
+let g:netrw_dirhist_6='/Users/rossmcf/src/github.com/adonovan/gopl.io/ch8/reverb1'
+let g:netrw_dirhist_7='/Users/rossmcf/src/github.com/adonovan/gopl.io/ch8/reverb2'
+let g:netrw_dirhist_8='/Users/rossmcf/.dotfiles'
