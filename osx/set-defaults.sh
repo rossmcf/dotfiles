@@ -8,7 +8,7 @@
 # Run ./set-defaults.sh and you'll be good to go.
 
 # Disable press-and-hold for keys in favor of key repeat.
-defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write -g ApplePressAndHoldEnabled -bool true
 
 # Use AirDrop over every interface. srsly this should be a default.
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
@@ -179,7 +179,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 				OpenWith -bool true \
 					Privileges -bool true
 
-# Set the icon size of Dock items to 36 pixels
+# Set the icon size of Dock items to HUGE. 
 defaults write com.apple.dock tilesize -int 128
 
 # Show indicator lights for open applications in the Dock
@@ -203,7 +203,7 @@ defaults write com.apple.dock mru-spaces -bool false
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
 # Remove the animation when hiding/showing the Dock
-defaults write com.apple.dock autohide-time-modifier -float 0
+defaults write com.apple.dock autohide-time-modifier -float 0.1
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
