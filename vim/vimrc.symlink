@@ -1,25 +1,40 @@
 call plug#begin('~/.vim/plugged')
+" Useful
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/neocomplete.vim'
 Plug 'SirVer/ultisnips'
-Plug 'tpope/vim-fugitive'
-Plug 'elzr/vim-json'
-Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
+Plug 'matze/vim-move'
+" Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/command-t', {
     \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
     \ }
+" JSON
+Plug 'elzr/vim-json'
+" Git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+" Go
+Plug 'fatih/vim-go'
+Plug 'garyburd/go-explorer'
+" AWS
+Plug 'https://github.com/m-kat/aws-vim'
+" PHP
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'joonty/vim-phpunitqf'
 call plug#end()
 
-set ts=4
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
 set noexpandtab
+set backspace=2
+
 if has("gui_running")
 	syntax enable
 	set background=dark
@@ -27,6 +42,10 @@ if has("gui_running")
 	if has("gui_macvim")
 		set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 	endif
+	set noerrorbells 
+	set novisualbell
+	set t_vb=
+	autocmd! GUIEnter * set vb t_vb=
 endif
 
 let g:airline_theme='solarized'
@@ -34,12 +53,14 @@ let g:airline_powerline_fonts=1
 :set laststatus=2
 
 " Open/close file browser
-" map <C-A> :NERDTreeToggle<CR>
 map <C-A> :vsplit .<CR>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Set $GOPATH
+let g:GoPath="~"
 
 " Check go syntax thoroughly.
 let g:syntastic_go_checkers = ["go", "gofmt", "golint", "gotype", "govet"]
@@ -51,16 +72,17 @@ let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 
 " vim-go + syntastic
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
-
 let g:go_fmt_command = "goimports"
 
 " Show tags with F8.
-nmap <F8> :TagbarToggle<CR>
+nmap <C-t>t :TagbarToggle<CR>
 
 " Required by vimwiki
 set nocompatible
@@ -71,7 +93,25 @@ command! -range -nargs=0 -bar JsonTool <line1>,<line2>!python -m json.tool
 
 " NERDCommenter
 filetype plugin on
-map <D-\> <leader>c<space>
+map <C-\> <leader>c<space>
+
+" Move
+let g:move_key_modifier = 'C'
+let g:move_map_keys = 0
+nmap <C-j> <Plug>MoveLineDown
+nmap <C-k> <Plug>MoveLineUp
+vmap <C-j> <Plug>MoveBlockDown
+vmap <C-k> <Plug>MoveBlockUp
 
 " Line numbers
 :set number
+
+
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ neocomplete#start_manual_complete()
+  function! s:check_back_space() "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction"}}}
