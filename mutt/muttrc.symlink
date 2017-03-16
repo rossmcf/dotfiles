@@ -1,0 +1,17 @@
+# Set MUTT_ADDR and MUTT_PASS in env vars.
+set imap_user = `echo \$MUTT_ADDR`
+set imap_pass = `echo \$MUTT_PASS`
+set smtp_url = `echo "smtp://${MUTT_ADDR}@smtp.gmail.com:587/"`
+set smtp_pass = `echo \$MUTT_PASS`
+set from = `echo \$MUTT_ADDR`
+set realname = "Ross McFarlane"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+set move = no
+set smtp_authenticators = ‘gssapi:login’
+set editor=`echo \$EDITOR`
+source ~/.dotfiles/mutt/mutt-colors-solarized-dark-16.muttrc
