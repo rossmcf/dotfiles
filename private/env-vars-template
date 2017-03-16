@@ -1,0 +1,6 @@
+# Template for environment variables.
+# Copy to ~/.env-vars and complete.
+
+# GMail Address / Password for mutt.
+export MUTT_ADDR=''
+export MUTT_PASS=''
