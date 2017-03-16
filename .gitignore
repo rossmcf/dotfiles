@@ -1,3 +1,4 @@
-atom.symlink
-git/gitconfig.symlink
-vim/vim.symlink/plugged
+.DS_Store
+*~
+*.swp
+vim/vim.symlink/plugged/*
