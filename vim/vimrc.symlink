@@ -24,7 +24,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'garyburd/go-explorer'
-Plug 'jodosha/vim-godebug'
 " AWS
 Plug 'https://github.com/m-kat/aws-vim'
 " PHP
