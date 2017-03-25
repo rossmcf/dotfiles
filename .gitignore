@@ -2,4 +2,5 @@
 *~
 *.swp
 vim/vim.symlink/plugged/*
+vim/vim.symlink/neoplugged/*
 vim/vim.symlink/.netrwhist

@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/neoplugged')
 " Useful
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
