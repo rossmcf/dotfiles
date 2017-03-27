@@ -39,19 +39,17 @@ set softtabstop=0
 set noexpandtab
 set backspace=2
 
-if has("gui_running")
-	syntax enable
-	set background=dark
-	colorscheme solarized
-	if has("gui_macvim")
-		set guifont=Source\ Code\ Pro\ for\ Powerline:h14
-	endif
-	set noerrorbells 
-	set novisualbell
-	set t_vb=
-	autocmd! GUIEnter * set vb t_vb=
-endif
+" Solarized
+syntax enable
+set background=dark
+colorscheme solarized
+let g:solarized_visibility='low'
+let g:solarized_termtrans=1
+let g:solarized_bold=1
+let g:solarized_underline=1
+let g:solarized_italic=1
 
+" Solarized Airline
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts=1
 :set laststatus=2
@@ -182,3 +180,8 @@ vmap <C-k> <Plug>MoveBlockUp
 
 " Line numbers
 :set number
+:set relativenumber
+
+" Invisibles
+set list
+set listchars=tab:⇾\ 
