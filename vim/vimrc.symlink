@@ -6,6 +6,7 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'SirVer/ultisnips'
 Plug 'matze/vim-move'
 Plug 'tpope/vim-dispatch'
+Plug 'terryma/vim-multiple-cursors'
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -29,8 +30,11 @@ Plug 'https://github.com/m-kat/aws-vim'
 " PHP
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'joonty/vim-phpunitqf'
+" Markdown
+Plug 'godlygeek/tabular'
+Plug 'hallison/vim-markdown'
 " Wiki
-Plug 'vimwiki/vimwiki', { 'branch': 'dev'}
+"Plug 'vimwiki/vimwiki', { 'branch': 'dev'}
 call plug#end()
 
 set tabstop=4
@@ -38,6 +42,8 @@ set shiftwidth=4
 set softtabstop=0
 set noexpandtab
 set backspace=2
+
+set wrap 
 
 " Solarized
 syntax enable
@@ -129,7 +135,10 @@ nmap <C-t>t :TagbarToggle<CR>
 set nocompatible
 filetype plugin on
 syntax on
-let g:vimwiki_list = [{'path': '~/Dropbox/txt/wiki/', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Dropbox/txt/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
+
+" Markdown
+command MarkdownPreview !open -a /Applications/Marked\ 2.app/ %
 
 " JSON
 :autocmd BufWritePre *.json :normal gg=G
@@ -177,6 +186,9 @@ nmap <C-j> <Plug>MoveLineDown
 nmap <C-k> <Plug>MoveLineUp
 vmap <C-j> <Plug>MoveBlockDown
 vmap <C-k> <Plug>MoveBlockUp
+
+" Flip between recent files.
+nmap <leader>p :bprevious<CR>
 
 " Line numbers
 :set number
