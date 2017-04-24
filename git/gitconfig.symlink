@@ -5,7 +5,7 @@
         protocol = https
 [user]
 	name = Ross McFarlane
-        email = ross@rossmcf.com
+	email = ross.mcfarlane@senseye.io
 [credential]
         helper = osxkeychain
 [alias]
@@ -22,7 +22,8 @@
 [core]
         excludesfile = ~/.gitignore
         editor = vim
-	hooksPath = ~/.git-templates/hooks
+	#hooksPath = ~/.git-templates/hooks
+	autocrlf = input
 [apply]
         whitespace = nowarn
 [mergetool]
