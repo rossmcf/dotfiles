@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 #
 # Homebrew
 #
@@ -13,6 +13,7 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark
+brew install tree
+brew install vim --with-lua
 
 exit 0
