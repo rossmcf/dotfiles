@@ -3,10 +3,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'matze/vim-move'
 Plug 'tpope/vim-dispatch'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-surround'
+Plug 'Chiel92/vim-autoformat'
+Plug 'Raimondi/delimitMate'
+Plug 'ternjs/tern_for_vim', {'do':'npm install'}
+Plug 'editorconfig/editorconfig-vim'
+"Plug 'terryma/vim-multiple-cursors'
 " Appearance
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -14,8 +21,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'wincent/command-t', {
-    \   'do': 'cd ruby/command-t && ruby extconf.rb && make'
-    \ }
+			\   'do': 'cd ruby/command-t && ruby extconf.rb && make'
+			\ }
 " JSON
 Plug 'elzr/vim-json'
 " Git
@@ -27,6 +34,8 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'garyburd/go-explorer'
 " AWS
 Plug 'https://github.com/m-kat/aws-vim'
+" JavaScript
+Plug 'pangloss/vim-javascript'
 " PHP
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'joonty/vim-phpunitqf'
@@ -43,7 +52,7 @@ set softtabstop=0
 set noexpandtab
 set backspace=2
 
-set wrap 
+set wrap
 
 " Solarized
 syntax enable
@@ -66,6 +75,11 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+nnoremap ,cd :lcd %:p:h
+
+" Autoformat on save
+au BufWrite * :Autoformat
+autocmd FileType yml,yaml,ctmpl,txt,Dockerfile let b:autoformat_autoindent=0
 
 " Apparently this is useful for vim-go.
 set autowrite
@@ -138,14 +152,15 @@ syntax on
 let g:vimwiki_list = [{'path': '~/Dropbox/txt/wiki/', 'syntax': 'markdown', 'ext': '.wiki'}]
 
 " Markdown
-command MarkdownPreview !open -a /Applications/Marked\ 2.app/ %
-
-" JSON
-:autocmd BufWritePre *.json :normal gg=G
+command! MarkdownPreview !open -a /Applications/Marked\ 2.app/ %
 
 " NERDCommenter
 filetype plugin on
 map <C-\> <leader>c<space>
+
+" EditorConfig
+" Play nicely with Fugitive
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " NeoComplete
 " Disable AutoComplPop.
@@ -160,12 +175,12 @@ let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
- "Define dictionary.
+"Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-	\ 'default' : '',
-	\ 'vimshell' : $HOME.'/.vimshell_hist',
-	\ 'scheme' : $HOME.'/.gosh_completions'
-	\ }
+			\ 'default' : '',
+			\ 'vimshell' : $HOME.'/.vimshell_hist',
+			\ 'scheme' : $HOME.'/.gosh_completions'
+			\ }
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
 	let g:neocomplete#keyword_patterns = {}
@@ -174,7 +189,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
 inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
@@ -196,4 +211,4 @@ nmap <leader>p :bprevious<CR>
 
 " Invisibles
 set list
-set listchars=tab:⇾\ 
+set listchars=tab:⇾\

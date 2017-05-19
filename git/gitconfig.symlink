@@ -5,7 +5,7 @@
         protocol = https
 [user]
 	name = Ross McFarlane
-	email = ross.mcfarlane@senseye.io
+	email = ross@rossmcf.com
 [credential]
         helper = osxkeychain
 [alias]
@@ -20,7 +20,7 @@
         branch = auto
         ui = true
 [core]
-        excludesfile = ~/.gitignore
+	excludesfile = /Users/rossmcf/.gitignore
         editor = vim
 	#hooksPath = ~/.git-templates/hooks
 	autocrlf = input
@@ -40,3 +40,9 @@
         default = simple
 [init]
 	templatedir = ~/.git-templates
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
