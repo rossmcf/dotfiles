@@ -4,3 +4,5 @@
 vim/vim.symlink/plugged/*
 vim/vim.symlink/neoplugged/*
 vim/vim.symlink/.netrwhist
+nvim/config.symlink/nvim/plugged/*
+nvim/config.symlink/nvim/.netrwhist
