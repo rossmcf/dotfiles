@@ -1,0 +1,5 @@
+alias dco='docker-compose'
+alias dct='docker-compose -f docker-compose-test.yml'
+alias dp='docker ps'
+alias dka='docker kill $(docker ps -q)'
+alias caup='docker run --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=8080:8080 --detach=true google/cadvisor:latest'
