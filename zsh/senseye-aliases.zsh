@@ -8,7 +8,7 @@ alias gocover="go test -coverprofile=coverage.out && go tool cover -html=coverag
 alias figit="docker-compose build && docker-compose up"
 
 # prints out the greatest port number exposed in a docker-compose.yml across all services.
-alias last_port="find $SENSEYE_BACKEND -name 'fig.yml' -o -name 'docker-compose.yml' -exec cat {} \; | grep -E '\b5[0-9]+:[0-9]+' | sed -E 's/[^0-9]*([0-9]+):([0-9]+)[^0-9]*/\1/g' | sort -n | tail -1"
+alias last_port="find ${SENSEYE_BACKEND} -name 'fig.yml' -o -name 'docker-compose.yml' -exec cat {} \; | grep -E '\b5[0-9]+:[0-9]+' | sed -E 's/[^0-9]*([0-9]+):([0-9]+)[^0-9]*/\1/g' | sort -n | tail -1"
 
 # kills all running containers
 alias dka='docker kill $(docker ps -q)'
@@ -26,6 +26,9 @@ function ipof {
 
 	docker inspect "$1" | grep -m 1 \"IPAddress\" | cut -d":" -sf 2 | sed 's/[^0-9.]//g'
 }
+
+alias mts='(make test && say pass || say fail)'
+
 # Attempts to connect to a mongo database within the specified container using the specified client
 function xmgo {
 	if [[ $# < 2 ]]
