@@ -21,8 +21,8 @@
         ui = true
 [core]
 	excludesfile = /Users/rossmcf/.gitignore
-        editor = vim
-	#hooksPath = ~/.git-templates/hooks
+	editor = nvim
+	hooksPath = ~/.git/hooks
 	autocrlf = input
 [apply]
         whitespace = nowarn
