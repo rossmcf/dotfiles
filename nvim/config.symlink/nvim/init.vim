@@ -1,43 +1,82 @@
 call plug#begin('~/.config/nvim/plugged')
-" Useful
+"Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/denite.nvim'
 Plug 'SirVer/ultisnips'
+Plug 'Shougo/denite.nvim'
 Plug 'matze/vim-move'
-"Plug 'tpope/vim-dispatch'
-"Plug 'mileszs/ack.vim'
-"Plug 'tpope/vim-surround'
-"Plug 'Chiel92/vim-autoformat'
-"Plug 'Raimondi/delimitMate'
-"Plug 'editorconfig/editorconfig-vim'
-"Plug 'terryma/vim-multiple-cursors'
-" Appearance
-Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-dispatch'
+Plug 'Chiel92/vim-autoformat'
+Plug 'Raimondi/delimitMate'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'altercation/vim-colors-solarized'
-"Plug 'majutsushi/tagbar'
-"Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'wincent/command-t', {'do': 'cd ruby/command-t && ruby extconf.rb && make'}
-" JSON
 Plug 'elzr/vim-json'
-" Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-" Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'jodosha/vim-godebug'
-"Plug 'AndrewRadev/splitjoin.vim'
 Plug 'garyburd/go-explorer'
-" AWS
+Plug 'pangloss/vim-javascript'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
+"Plug 'editorconfig/editorconfig-vim'
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'majutsushi/tagbar'
+Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'https://github.com/m-kat/aws-vim'
-" JavaScript
-"Plug 'pangloss/vim-javascript'
-" Markdown
+"Plug 'mileszs/ack.vim'
+"Plug 'tpope/vim-surround'
 "Plug 'godlygeek/tabular'
 "Plug 'hallison/vim-markdown'
 call plug#end()
+
+set nocompatible
+filetype off
+filetype plugin indent on
+
+set laststatus=2
+set encoding=utf-8              " Set default encoding to UTF-8
+set autoread                    " Automatically reread changed files without asking me anything
+set autoindent                  
+set backspace=indent,eol,start  " Makes backspace key more powerful.
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set mouse=a      
+
+set noerrorbells             " No beeps
+set number                   " Show line numbers
+set showcmd                  " Show me what I'm typing
+set noswapfile               " Don't use swapfile
+set nobackup                 " Don't create annoying backup files
+set splitright               " Split vertical windows right to the current windows
+set splitbelow               " Split horizontal windows below to the current windows
+set autowrite                " Automatically save before :next, :make etc.
+set hidden
+set fileformats=unix,dos,mac " Prefer Unix over Windows over OS 9 formats
+set noshowmatch              " Do not show matching brackets by flickering
+set noshowmode               " We show the mode with airline or lightline
+set ignorecase               " Search case insensitive...
+set smartcase                " ... but not it begins with upper case 
+set completeopt=menu,menuone
+set nocursorcolumn           " speed up syntax highlighting
+set nocursorline
+set updatetime=400
+
+set pumheight=10             " Completion window max size
+set colorcolumn=80           " Vertical line at column 80.
+
+"http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+set clipboard^=unnamed
+set clipboard^=unnamedplus
+
+set viminfo='200
+
+set lazyredraw          " Wait to redraw
+
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/nvim/tmp/undo//
+endif
 
 set tabstop=4
 set shiftwidth=4
@@ -47,9 +86,12 @@ set backspace=2
 
 set wrap
 
+" Invisibles
+set list
+set listchars=tab:⇾\
+
 " Solarized
 syntax enable
-set background=dark
 colorscheme solarized
 let g:solarized_visibility='low'
 let g:solarized_termtrans=1
@@ -58,9 +100,8 @@ let g:solarized_underline=1
 let g:solarized_italic=1
 let g:airline_theme='solarized'
 let g:airline_powerline_fonts=1
+set background=dark
 :set laststatus=2
-set list
-set listchars=tab:⇾\
 
 " Open/close file browser
 map <C-h> <C-w>h
@@ -111,7 +152,7 @@ let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_metalinter_autosave = 1
-let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint']
 
 " vim-go + syntastic
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
@@ -119,6 +160,8 @@ let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:syntastic_go_checkers = ["go", "gofmt", "golint", "gotype", "govet"]
 
 let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " Show tags with F8.
 "nmap <C-t>t :TagbarToggle<CR>
@@ -143,5 +186,30 @@ vmap <C-j> <Plug>MoveBlockDown
 vmap <C-k> <Plug>MoveBlockUp
 
 " Line numbers
-:set number
-:set relativenumber
+set number
+set relativenumber
+
+" ==================== CtrlP ====================
+let g:ctrlp_cmd = 'CtrlPMRU'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_switch_buffer = 'et'  " jump to a file if it's open already
+let g:ctrlp_mruf_max=450    " number of recently opened files
+let g:ctrlp_max_files=0     " do not limit the number of searchable files
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+let g:ctrlp_match_window = 'bottom,order:btt,max:10,results:10'
+let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
+
+func! MyCtrlPTag()
+  let g:ctrlp_prompt_mappings = {
+        \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+        \ 'AcceptSelection("t")': ['<c-t>'],
+        \ }
+  CtrlPBufTag
+endfunc
+command! MyCtrlPTag call MyCtrlPTag()
+
+
+nmap <C-b> :CtrlPCurWD<cr>
+imap <C-b> <esc>:CtrlPCurWD<cr>
