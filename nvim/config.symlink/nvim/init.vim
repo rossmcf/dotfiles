@@ -1,5 +1,4 @@
 call plug#begin('~/.config/nvim/plugged')
-"Plug 'AndrewRadev/splitjoin.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
@@ -19,15 +18,7 @@ Plug 'garyburd/go-explorer'
 Plug 'pangloss/vim-javascript'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ervandew/supertab'
-"Plug 'editorconfig/editorconfig-vim'
-"Plug 'terryma/vim-multiple-cursors'
-"Plug 'majutsushi/tagbar'
 Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'https://github.com/m-kat/aws-vim'
-"Plug 'mileszs/ack.vim'
-"Plug 'tpope/vim-surround'
-"Plug 'godlygeek/tabular'
-"Plug 'hallison/vim-markdown'
 call plug#end()
 
 set nocompatible
@@ -122,6 +113,7 @@ map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 let g:go_list_type = "quickfix" " quickfix everywhere
 let g:go_snippet_case_type = "camelcase"
+let g:go_addtags_transform = "camelcase"
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <leader>f  <Plug>(go-test-func)
@@ -163,11 +155,15 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
 let g:UltiSnipsExpandTrigger="<tab>"
 
+" Show todos in a go project.
+" Fatih is a star.
+ autocmd Filetype go command! GoTodos vimgrep TODO: **/*.go | cwindow
+
 " Show tags with F8.
 "nmap <C-t>t :TagbarToggle<CR>
 
 " Markdown
-command! MarkdownPreview !open -a /Applications/Marked\ 2.app/ %
+command! MarkdownPreview !open -a /Applications/MacDown.app/ %
 
 " NERDCommenter
 filetype plugin on
@@ -176,6 +172,7 @@ map <C-\> <leader>c<space>
 " EditorConfig
 " Play nicely with Fugitive
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+au FileType gitcommit set tw=72
 
 " Move
 let g:move_key_modifier = 'C'
@@ -203,13 +200,27 @@ let g:ctrlp_buftag_types = {'go' : '--language-force=go --golang-types=ftv'}
 
 func! MyCtrlPTag()
   let g:ctrlp_prompt_mappings = {
-        \ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
-        \ 'AcceptSelection("t")': ['<c-t>'],
-        \ }
+		\ 'AcceptSelection("e")': ['<cr>', '<2-LeftMouse>'],
+		\ 'AcceptSelection("t")': ['<c-t>'],
+		\ }
   CtrlPBufTag
 endfunc
 command! MyCtrlPTag call MyCtrlPTag()
 
-
 nmap <C-b> :CtrlPCurWD<cr>
 imap <C-b> <esc>:CtrlPCurWD<cr>
+
+" Fat-fingered commands
+" Courtesy of github.com/captainsafia
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
+cnoreabbrev Vsp vsp
+
