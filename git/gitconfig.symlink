@@ -7,7 +7,7 @@
 	name = Ross McFarlane
 	email = ross@rossmcf.com
 [credential]
-        helper = osxkeychain
+	helper = osxkeychain
 [alias]
         co = checkout
         promote = !$ZSH/bin/git-promote
@@ -26,10 +26,8 @@
 	autocrlf = input
 [apply]
         whitespace = nowarn
-[mergetool]
-        keepBackup = false
 [difftool]
-        prompt = false
+	prompt = false
 [help]
         autocorrect = 1
 [push]
