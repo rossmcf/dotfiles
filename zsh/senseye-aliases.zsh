@@ -1,3 +1,6 @@
+# Jump to backend directory
+alias cdbe="cd ~/src/bitbucket.org/senseye/backend"
+
 # sets GOPATH to the current work directory
 alias gohere="export GOPATH=\`pwd\`; echo \"GOPATH := '\$GOPATH'\"; PATH=\"$PATH:\$GOPATH/bin\"; echo \"PATH = \$PATH\""
 
