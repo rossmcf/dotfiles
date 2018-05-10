@@ -187,8 +187,8 @@ set number
 set relativenumber
 
 " ==================== CtrlP ====================
-let g:ctrlp_cmd = 'CtrlPMRU'
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'a'
 let g:ctrlp_switch_buffer = 'et'  " jump to a file if it's open already
 let g:ctrlp_mruf_max=450    " number of recently opened files
 let g:ctrlp_max_files=0     " do not limit the number of searchable files
