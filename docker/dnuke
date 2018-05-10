@@ -1,0 +1,17 @@
+echo "Removing containers…"
+docker rm $(docker ps -a -q) -v -f 2> /dev/null
+echo "Removing images…"
+docker rmi $(docker images -q) -f 2> /dev/null
+echo "Killing Docker…"
+killall Docker
+open /Applications/Docker.app
+
+sleep 1
+echo "Waiting for docker to restart…"
+until docker ps > /dev/null 2> /dev/null
+do
+sleep 1
+done
+
+echo "Done."
+osascript -e "display notification with title \"🐳\""
