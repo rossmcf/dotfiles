@@ -1,14 +1,17 @@
 # Jump to backend directory
 alias cdbe="cd ~/src/bitbucket.org/senseye/backend"
 
+# Jump to senseye dir.
+alias cds="cd ~/src/bitbucket.org/senseye"
+
 # sets GOPATH to the current work directory
 alias gohere="export GOPATH=\`pwd\`; echo \"GOPATH := '\$GOPATH'\"; PATH=\"$PATH:\$GOPATH/bin\"; echo \"PATH = \$PATH\""
 
 # runs go test and shows code coverage when complete
 alias gocover="go test -coverprofile=coverage.out && go tool cover -html=coverage.out"
 
-# build and run docker-compose
-alias figit="docker-compose build && docker-compose up"
+# run make test three times and tell me when it's done
+alias mt3="make test && make test && make test; tada"
 
 # prints out the greatest port number exposed in a docker-compose.yml across all services.
 alias last_port="find ${SENSEYE_BACKEND} -name 'fig.yml' -o -name 'docker-compose.yml' -exec cat {} \; | grep -E '\b5[0-9]+:[0-9]+' | sed -E 's/[^0-9]*([0-9]+):([0-9]+)[^0-9]*/\1/g' | sort -n | tail -1"

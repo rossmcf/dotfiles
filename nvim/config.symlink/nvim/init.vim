@@ -213,6 +213,7 @@ imap <C-b> <esc>:CtrlPCurWD<cr>
 " Fat-fingered commands
 " Courtesy of github.com/captainsafia
 cnoreabbrev W! w!
+cnoreabbrev E! e!
 cnoreabbrev Q! q!
 cnoreabbrev Qall! qall!
 cnoreabbrev Wq wq

@@ -14,6 +14,7 @@
         wtf     = !$ZSH/bin/git-wtf
         rank-contributors = !$ZSH/bin/git-rank-contributors
         count   = !git shortlog -sn
+	d = difftool
 [color]
         diff = auto
         status = auto
@@ -38,9 +39,14 @@
         default = simple
 [init]
 	templatedir = ~/.git-templates
+[difftool "neovim"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+	path = 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[diff]
+	tool = neovim
