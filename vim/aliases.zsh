@@ -1,1 +1,1 @@
-alias vd='nvim .'
+alias vd='vim .'
