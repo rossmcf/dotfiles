@@ -1,5 +1,3 @@
-set from = `echo \$MUTT_ADDR`
-set realname = "Ross McFarlane"
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set certificate_file = ~/.mutt/certificates
@@ -16,6 +14,17 @@ set postponed="+.Drafts"
 set spoolfile="~/Maildir"
 
 #mailboxes 
+# Set MUTT_ADDR and MUTT_PASS in env vars.
+set from = `echo \$MUTT_ADDR`
+set imap_user = `echo \$MUTT_ADDR`
+set imap_pass = `echo \$MUTT_PASS`
+set smtp_url = `echo "smtp://${MUTT_ADDR}@smtp.gmail.com:587/"`
+set smtp_pass = `echo \$MUTT_PASS`
+set realname = "Ross McFarlane"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set smtp_authenticators = ‘gssapi:login’
 
 # Add macros to make the folder browser usable by always using the mailboxes setup above:
 macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
@@ -26,3 +35,5 @@ macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 macro compose A "<attach-message>?<toggle-mailboxes>" "attach message(s) to this message"
 
+auto_view text/html
+alternative_order text/plain text/enriched text/html
