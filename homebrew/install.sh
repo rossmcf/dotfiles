@@ -14,6 +14,6 @@ fi
 
 # Install homebrew packages
 brew install tree
-brew install vim --with-lua
+brew install vim --with-lua --with-python3
 
 exit 0

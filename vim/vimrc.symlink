@@ -1,3 +1,51 @@
+set nocompatible
+filetype off
+filetype plugin indent on
+
+set laststatus=2
+set encoding=utf-8              " Set default encoding to UTF-8
+set autoread                    " Automatically reread changed files without asking me anything
+set autoindent                  
+set backspace=indent,eol,start  " Makes backspace key more powerful.
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set mouse=a      
+
+set noerrorbells             " No beeps
+set number                   " Show line numbers
+set showcmd                  " Show me what I'm typing
+set noswapfile               " Don't use swapfile
+set nobackup                 " Don't create annoying backup files
+set splitright               " Split vertical windows right to the current windows
+set splitbelow               " Split horizontal windows below to the current windows
+set autowrite                " Automatically save before :next, :make etc.
+set hidden
+set fileformats=unix,dos,mac " Prefer Unix over Windows over OS 9 formats
+set noshowmatch              " Do not show matching brackets by flickering
+set noshowmode               " We show the mode with airline or lightline
+set ignorecase               " Search case insensitive...
+set smartcase                " ... but not it begins with upper case 
+set completeopt=menu,menuone
+set nocursorcolumn           " speed up syntax highlighting
+set nocursorline
+set updatetime=400
+
+set pumheight=10             " Completion window max size
+set colorcolumn=80           " Vertical line at column 80.
+
+"http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+set clipboard^=unnamed
+set clipboard^=unnamedplus
+
+set viminfo='200
+
+set lazyredraw          " Wait to redraw
+
+if has('persistent_undo')
+  set undofile
+  set undodir=~/.config/nvim/tmp/undo//
+endif
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=0
@@ -135,3 +183,5 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<C-N>" : "\<tab>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:python3_host_prog='/usr/local/bin/python3'
+let g:acp_behaviorKeywordCommand = "\<C-x>\<C-o>"
+:set completeopt-=preview
